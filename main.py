@@ -10,7 +10,7 @@ def congratulate_user(guesses):
 
 
 def is_game_over():
-    print("You lose!!!")
+    print("You lose")
     return guessed == WORDS_TO_WIN or errors == ERRORS_TO_LOSE
 
 
@@ -22,6 +22,9 @@ def guess_is_valid(candidate):
         count = word.count(letter)
         if count < candidate.count(letter):
             print(f"You can use letter {letter} only {count} times")
+            return False
+        if candidate in guesses:
+            print("Error! You can't write this word twice")
             return False
     return True
 
